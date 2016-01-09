@@ -4,8 +4,8 @@
 # so that it works correctly
 {% load_yaml as rawmap %}
 Ubuntu:
-  server: mysql-server
-  client: mysql-client
+  server: mysql-community-server
+  client: mysql-community-client
   service: mysql
   python: python-mysqldb
   debconf_utils: debconf-utils
@@ -34,12 +34,13 @@ Ubuntu:
         max_allowed_packet: 16M
         thread_stack: 192K
         thread_cache_size: 8
-        myisam_recover: BACKUP
+        myisam_recover_options: BACKUP
         query_cache_limit: 1M
         query_cache_size: 16M
         log_error: /var/log/mysql/error.log
         expire_logs_days: 10
         max_binlog_size: 100M
+        explicit_defaults_for_timestamp: true
       mysqldump:
         quick: noarg_present
         quote_names: noarg_present
